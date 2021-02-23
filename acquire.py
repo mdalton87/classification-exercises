@@ -106,6 +106,15 @@ def get_titanic_data(cached=False):
 
 ## IRIS DATABASE
 
+def new_iris_data():
+    '''
+    This function reads in the iris data from the Codeup db
+    and returns a pandas DataFrame with all columns.
+    '''
+    sql_query = 'SELECT * FROM measurements JOIN species USING(species_id)'
+    return pd.read_sql(sql_query, get_connection('iris_db'))
+
+
 def get_iris_data(cached=False):
     '''
     This function reads in iris data from Codeup database and writes data to
@@ -115,7 +124,7 @@ def get_iris_data(cached=False):
     if cached == False or os.path.isfile('iris_df.csv') == False:
         
         # Read fresh data from db into a DataFrame.
-        df = sns.load_dataset('iris')
+        df = new_iris_data()
         
         # Write DataFrame to a csv file.
         df.to_csv('iris_df.csv')
