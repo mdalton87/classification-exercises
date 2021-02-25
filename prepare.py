@@ -18,7 +18,7 @@ def clean_iris():
     '''
     clean_iris will take a dataframe acquired as df and remove columns:
         species_id: species_name has same info but more descriptive
-        measurement_id: contains no statistical value
+        measurement_id: redundant to the index, so no statistical value
     rename species_name to species,
     and add dummy values for the species
     return: single cleaned dataframe
