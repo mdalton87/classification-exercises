@@ -2,16 +2,9 @@ import pandas as pd
 import numpy as np
 import os
 
-# visualize
-import seaborn as sns
-import matplotlib.pyplot as plt
-plt.rc('figure', figsize=(11, 9))
-plt.rc('font', size=13)
-
 # acquire
 from env import host, user, password
 from pydataset import data
-import acquire
 
 
 
