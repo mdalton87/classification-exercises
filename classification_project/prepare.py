@@ -34,19 +34,39 @@ def clean_telco():
             'payment_type_id',
             'internet_service_type_id',
             'contract_type_id',
-            'customer_id',
             'internet_service_type_none'
                ]
     df = pd.concat([df, dummy_df,dummy2_df], axis=1)
     df.columns = df.columns.str.lower().str.replace(' ', '_').str.replace('(','').str.replace(')','')
     df.drop(columns=dropcols, inplace=True)
-    df.columns = [
-        'senior_citizen','partner','dependents','tenure','phone_service','multiple_lines',
-        'online_security','online_backup','device_protection','tech_support','streaming_tv',
-        'streaming_movies','paperless_billing','monthly_charges','total_charges','churn',
-        'contract_type','internet_service_type','payment_type','gender_male',
-        'one_year_contract','two_year_contract','credit_card_payment','e_check_payment',
-        'mailed_check_payment','dsl_internet','fiber_optic_internet']
+    df.columns = ['customer_id', 
+                  'senior_citizen',
+                  'partner',
+                  'dependents',
+                  'tenure',
+                  'phone_service',
+                  'multiple_lines',
+                  'online_security',
+                  'online_backup',
+                  'device_protection',
+                  'tech_support',
+                  'streaming_tv',
+                  'streaming_movies',
+                  'paperless_billing',
+                  'monthly_charges',
+                  'total_charges',
+                  'churn',
+                  'contract_type',
+                  'internet_service_type',
+                  'payment_type',
+                  'gender_male',
+                  'one_year_contract',
+                  'two_year_contract',
+                  'credit_card_payment',
+                  'e_check_payment',
+                  'mailed_check_payment',
+                  'dsl_internet',
+                  'fiber_optic_internet']
     df.total_charges = pd.to_numeric(df.total_charges, errors='coerce').astype('float64')
     df.total_charges = df.total_charges.fillna(value=0)
     df = df.replace("Yes", 1).replace("No", 0)
