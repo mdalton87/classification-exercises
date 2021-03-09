@@ -20,7 +20,7 @@ def get_connection(db, user=user, host=host, password=password):
         
 def new_telco_data():
     '''
-    This function reads in the titanic data from the Codeup db
+    This function reads in the tecl_churn data from the Codeup db
     and returns a pandas DataFrame with all columns.
     '''
     sql_query = '''
@@ -37,9 +37,7 @@ def new_telco_data():
         
 def get_telco_data(cached=False):
     '''
-    This function reads in telco_churn data from Codeup database and writes data to
-    a csv file if cached == False or if cached == True reads in titanic df from
-    a csv file, returns df.
+    This function reads in telco_churn data from Codeup database and writes data to a csv file if cached == False or if cached == True reads in titanic df from a csv file, returns df.
     '''
     if cached == False or os.path.isfile('telco_churn.csv') == False:
         

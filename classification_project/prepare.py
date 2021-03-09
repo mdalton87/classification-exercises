@@ -16,12 +16,7 @@ from sklearn.impute import SimpleImputer
 
 def clean_telco():
     '''
-    clean_telco will take in the telco_churn data as df, replace "No service" string with "No", 
-    convert categorical variable into dummy/indicator variables, drop columns with duplicate
-    information as well as statistically invalid columns, normalize the column titles, rename some titles for
-    legibility, convert total_charges to dtype='float64' and fill null values in total_charges
-    with 0 since the customers tenure was 0 and have yet to pay their first bill. Finally,this
-    function converts 'Yes' to 1 and 'No' to 0.
+    clean_telco will take in the telco_churn data as df, replace "No service" string with "No", convert categorical variable into dummy/indicator variables, drop columns with duplicate  information as well as statistically invalid columns, normalize the column titles, rename some titles for  legibility, convert total_charges to dtype='float64' and fill null values in total_charges with 0 since the customers tenure was 0 and have yet to pay their first bill. Finally,this function converts 'Yes' to 1 and 'No' to 0.
     '''
     df = get_telco_data()
     df.replace('No phone service', 'No', inplace=True)
@@ -109,19 +104,3 @@ def prep_telco_data():
                                        stratify=train_validate.churn)
     train, validate, test = impute_mode()
     return train, validate, test
-
-
-
-def prep_train_val_test(train, validate, test):
-    '''
-    Use for after data is split
-    '''
-    train = train.assign(n_services = train[train.columns[7:13]].sum(axis=1))
-    validate = validate.assign(n_services = validate[validate.columns[7:13]].sum(axis=1))
-    test = test.assign(n_services = test[test.columns[7:13]].sum(axis=1))
-    dropcols = ['senior_citizen','partner','dependents','tenure','phone_service','multiple_lines','paperless_billing','monthly_charges','total_charges','contract_type','payment_type','gender_male','one_year_contract','two_year_contract','credit_card_payment','e_check_payment','mailed_check_payment']
-    train = train.drop(columns=dropcols)
-    validate = validate.drop(columns=dropcols)
-    test = test.drop(columns=dropcols)
-    return train, validate, test
-    

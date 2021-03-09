@@ -7,12 +7,7 @@ from scipy import stats
 
 def train_validate_test_split(df, target, seed=123):
     '''
-    This function takes in a dataframe, the name of the target variable
-    (for stratification purposes), and an integer for a setting a seed
-    and splits the data into train, validate and test. 
-    Test is 20% of the original dataset, validate is .30*.80= 24% of the 
-    original dataset, and train is .70*.80= 56% of the original dataset. 
-    The function returns, in this order, train, validate and test dataframes. 
+    This function takes in a dataframe, the name of the target variable (for stratification purposes), and an integer for a setting a seed and splits the data into train, validate and test. Test is 20% of the original dataset, validate is .30*.80= 24% of the original dataset, and train is .70*.80= 56% of the original dataset. The function returns, in this order, train, validate and test dataframes. 
     '''
     train_validate, test = train_test_split(df, test_size=0.2, 
                                             random_state=seed, 
@@ -85,8 +80,7 @@ def explore_univariate_quant(train, quant_var):
     
 def freq_table(train, cat_var):
     '''
-    for a given categorical variable, compute the frequency count and percent split
-    and return a dataframe of those values along with the different classes. 
+    for a given categorical variable, compute the frequency count and percent split and return a dataframe of those values along with the different classes. 
     '''
     class_labels = list(train[cat_var].unique())
 
@@ -103,10 +97,7 @@ def freq_table(train, cat_var):
 
 def explore_bivariate_categorical(train, target, cat_var):
     '''
-    takes in categorical variable and binary target variable, 
-    returns a crosstab of frequencies
-    runs a chi-square test for the proportions
-    and creates a barplot, adding a horizontal line of the overall rate of the target. 
+    takes in categorical variable and binary target variable, returns a crosstab of frequencies runs a chi-square test for the proportions and creates a barplot, adding a horizontal line of the overall rate of the target. 
     '''
     print(cat_var, "\n_____________________\n")
     ct = pd.crosstab(train[cat_var], train[target], margins=True)
