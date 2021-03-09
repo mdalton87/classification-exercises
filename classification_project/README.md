@@ -9,6 +9,27 @@
 
 # Data Dictionary
 
+---
+| Attribute | Definition | Data Type |
+| ----- | ----- | ----- |
+|customer\_id|Alpha-numeric ID that identifies each customer| object |
+online_security|Indicates if a customer has online security add-on| int64 |
+online_backup|Indicates if a customer has online backups add-on| int64 |
+device_protection|Indicates if a customer has a protection plan for Telco™ devices| int64 |
+tech_support|Indicates whether a customer has technical support add-on| int64 |
+streaming_tv|Indicates if a customer uses internet to stream tv| int64 |
+streaming_movies|Indicates if a customer uses internet to stream movies| int64 |
+|internet\_service\_type|Indicates the type of internet service a customer has| object |
+|dsl_internet|Indicates if the customer has dsl internet or not| uint8 |
+|fiber_optic_internet|Indicates if the customer has fiber optic internet or not| uint8 |
+|n_services|Sum of online_security, online_backup, device_protection, tech_support, streaming_tv, and streaming_movies| int64 |
+
+| Target | Definition | Data Type |
+| ----- | ----- | ----- |
+|churn|Indicates whether a customer has terminated service| object |
+
+
+
 ## Data acqisition
 - connect to SQL server using env file 
 - wrote SQL query to acquire the correct and complete database, telco_churn.
