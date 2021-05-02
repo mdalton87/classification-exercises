@@ -1,3 +1,1 @@
-# classification-exercises
-
-This repo will be used to learn machine learning techniques
+This repository has been created to hold all of my Codeup classification modeling exercises.

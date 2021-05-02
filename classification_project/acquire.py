@@ -4,7 +4,6 @@ import os
 
 # acquire
 from env import host, user, password
-from pydataset import data
 
 
 
